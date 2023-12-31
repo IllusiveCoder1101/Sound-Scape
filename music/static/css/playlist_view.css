@@ -1,0 +1,103 @@
+* {
+    --primary-color-: #393E46;
+    --secondary-color1-: #EEEEEE;
+    --secondary-color2-: #222831;
+    --accent-color1-: #00ADB5;
+    --accent-color2-: #83D8DC;
+    --accent-color3-: #076267;
+    --accent-color4-: #393E46;
+}
+
+.songcontainer2 {
+    display: flex;
+    align-items: center;
+
+    border-bottom: 0.3em solid var(--accent-color2-);
+    background-color: var(--secondary-color2-);
+    padding: 1em;
+}
+
+.desc3 {
+    width: 65%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.songicon {
+    width: 4.5em;
+    aspect-ratio: 1/1;
+    object-fit: cover;
+    border-radius: 50%;
+    margin: 0 0.5em 0 0em
+}
+
+.playlistsongcontainer {
+
+
+    width: 80%;
+    height: 80vh;
+    margin: 4em 0.5em;
+    display: flex;
+    flex-direction: column;
+    padding: 1em;
+    border: 0.2em solid var(--secondary-color1-);
+    border-radius: 1em;
+    background-color: var(--secondary-color2-);
+
+}
+
+.play_btn1 {
+    width: 1em;
+    align-self: center;
+
+}
+
+.title1 {
+    font-family: barlow;
+    color: var(--secondary-color1-);
+    font-size: 1em;
+}
+
+.para1 {
+    font-family: Inter;
+    font-size: 0.9em;
+    color: var(--secondary-color1-);
+}
+
+.subsection3 {
+    overflow-y: scroll;
+    padding: 0.5em;
+    margin: 1em 0 0 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+}
+
+.validation_message {
+    font-family: Inter;
+    color: var(--accent-color4-);
+    font-size: 1.5em;
+    text-align: center;
+    margin: 9em 0;
+}
+
+@media screen and (min-width:768px) {
+    .playlistsongcontainer {
+        width: 30%;
+        margin: 4em 2em;
+    }
+
+
+
+    .title1 {
+        font-family: barlow;
+        color: var(--secondary-color1-);
+        font-size: 1.3em;
+    }
+
+    .para1 {
+        font-family: Inter;
+        font-size: 1em;
+        color: var(--secondary-color1-);
+    }
+}

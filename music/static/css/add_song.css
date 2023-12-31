@@ -1,0 +1,97 @@
+.modify {
+    padding: 0.8em;
+}
+
+.modify-img {
+    width: 2em;
+}
+
+.addsongdashboard {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: url("../images/loginbg.png");
+    background-size: cover;
+}
+
+.addsongcontainer {
+    width: 90%;
+    max-width: 60em;
+    gap: 1.2em;
+    margin: 5em 0;
+    border-radius: 25px;
+    border: 0.1em solid var(--secondary-color2-);
+    background: linear-gradient(141deg, rgba(57, 62, 70, 0.60) 1.83%, rgba(57, 62, 70, 0.10) 100%);
+    align-items: center;
+    padding: 1em;
+    backdrop-filter: blur(0.2em);
+}
+
+.heading3 {
+    width: 100%;
+    text-align: left;
+    padding-bottom: 0.3em;
+    border-bottom: 0.05em solid var(--secondary-color1-);
+    color: var(--Secondary-1, #EEE);
+    text-shadow: 15px 12px 50px rgba(0, 0, 0, 0.30);
+    /* Heading XL */
+    font-family: Barlow;
+    font-size: 2em;
+    font-style: normal;
+    font-weight: 700;
+    margin: 0.5em 0 0 0;
+}
+
+.formcontainer,
+.form_contain {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 1em 1.2em;
+
+}
+
+
+
+.lyricsinput {
+
+    overflow-y: scroll;
+    white-space: pre-wrap;
+}
+
+.btn-1 {
+    margin: 1em 0 0.5em;
+    align-self: center;
+}
+
+.input2,
+.input3,
+.input4 {
+    color: #FFF;
+    resize: none;
+    text-shadow: 15px 12px 50px rgba(0, 0, 0, 0.30);
+    /* Body Bold XL */
+    font-family: Inter;
+    font-size: 0.9em;
+    padding: 1em;
+    border-radius: 25px;
+    border: 2px solid #EFEFEF;
+    width: 90%;
+    background: none;
+    box-shadow: 0px 4px 25px 0px rgba(0, 0, 0, 0.25);
+}
+
+.input4 {
+
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.input3,
+.input4 {
+    width: 25em;
+}

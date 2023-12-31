@@ -1,0 +1,109 @@
+* {
+    --primary-color-: #393E46;
+    --secondary-color1-: #EEEEEE;
+    --secondary-color2-: #222831;
+    --accent-color1-: #00ADB5;
+    --accent-color2-: #83D8DC;
+    --accent-color3-: #076267;
+    --accent-color4-: #393E46;
+}
+
+.cover-img2,
+.cover-img1 {
+    width: 10em;
+    aspect-ratio: 3/3;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.cover-img1 {
+    width: 3em;
+    aspect-ratio: 1/1;
+}
+
+.para1 {
+    font-family: Inter;
+    color: var(--secondary-color1-);
+}
+
+.songsection1 {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2em;
+    margin: 1em 0 2em;
+}
+
+.validation_message {
+    font-family: Inter;
+    width: 10em;
+    color: var(--accent-color3-);
+    font-size: 1.2em;
+    text-align: center;
+    margin: 2em 0;
+}
+
+.songcontainer1 {
+    display: flex;
+    flex-direction: column;
+
+    min-width: 10em;
+    width: 37%;
+    padding: 1em 1em 0;
+    border-radius: 1em;
+    background: linear-gradient(141deg, rgba(57, 62, 70, 0.60) 1.83%, rgba(57, 62, 70, 0.10) 100%);
+    border: 0.1em solid var(--secondary-color1-);
+
+}
+
+.songs-albums-container,
+.primary {
+    display: flex;
+    gap: 1em;
+}
+
+.primary,
+.secondary1 {
+    align-self: center;
+}
+
+.secondary1 {
+    margin: 2em 0 0;
+}
+
+.songs-holder,
+.album-holder {
+    padding: 1em;
+}
+
+.songs-inner,
+.albums-inner {
+    height: 19em;
+    overflow-y: scroll;
+    padding: 0.5em;
+}
+
+
+.primary {
+    align-items: center;
+}
+
+.song2 {
+    width: 13em;
+    padding: 1.5em 0 1em;
+    display: flex;
+    align-items: flex-start;
+    gap: 0.5em;
+    border-bottom: 0.2em solid var(--accent-color2-);
+}
+
+.btns {
+    align-self: center;
+    margin: 1em 0 1em 0;
+}
+
+.subsection1 {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5em;
+}

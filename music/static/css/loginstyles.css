@@ -1,0 +1,122 @@
+* {
+    --primary-color-: #393E46;
+    --secondary-color1-: #EEEEEE;
+    --secondary-color2-: #222831;
+    --accent-color1-: #00ADB5;
+    --accent-color2-: #83D8DC;
+    --accent-color3-: #076267;
+    --accent-color4-: #393E46;
+    --error-color-: rgb(250, 40, 40);
+}
+
+.login {
+    width: 100%;
+    height: 95vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: url("../images/loginbg.png");
+    background-size: cover;
+}
+
+.formContainer,
+.form {
+    display: flex;
+    flex-direction: column;
+}
+
+.formContainer {
+    width: 90%;
+    max-width: 30em;
+    gap: 1.2em;
+    border-radius: 25px;
+    border: 0.1em solid var(--secondary-color2-);
+    background: linear-gradient(141deg, rgba(57, 62, 70, 0.60) 1.83%, rgba(57, 62, 70, 0.10) 100%);
+    align-items: center;
+
+    backdrop-filter: blur(0.2em);
+}
+
+.formHeader {
+    width: 90%;
+    text-align: center;
+    padding-bottom: 0.3em;
+    border-bottom: 0.05em solid var(--secondary-color1-);
+    color: var(--Secondary-1, #EEE);
+    text-shadow: 15px 12px 50px rgba(0, 0, 0, 0.30);
+    /* Heading XL */
+    font-family: Barlow;
+    font-size: 2em;
+    font-style: normal;
+    font-weight: 700;
+    margin: 0.5em 0 0 0;
+}
+
+.form {
+    width: 90%;
+    gap: 1em;
+}
+
+.label {
+    color: var(--secondary-color1-);
+    text-shadow: 15px 12px 50px rgba(0, 0, 0, 0.30);
+
+    font-family: Inter;
+    font-size: 1.3em;
+    font-style: normal;
+    font-weight: 700;
+}
+
+.error_message {
+    font-family: Inter;
+    font-size: 1.2em;
+    color: var(--error-color-);
+    text-align: center;
+}
+
+.input {
+    color: #FFF;
+
+    text-shadow: 15px 12px 50px rgba(0, 0, 0, 0.30);
+    /* Body Bold XL */
+    font-family: Inter;
+    font-size: 0.9em;
+    padding: 0.9em;
+    border-radius: 25px;
+    border: 2px solid #EFEFEF;
+
+    background: none;
+
+    box-shadow: 0px 4px 25px 0px rgba(0, 0, 0, 0.25);
+
+
+}
+
+.link-text,
+.link {
+    color: var(--secondary-color1-);
+    text-shadow: 15px 12px 50px rgba(0, 0, 0, 0.30);
+
+    font-family: Inter;
+    font-size: 1em;
+    font-style: normal;
+    font-weight: 400;
+    margin: 0 0 2em 0;
+}
+
+.submit {
+    align-self: center;
+    font-size: 0.9em;
+    margin: 0.5em 0 0em 0;
+}
+
+.link {
+    text-decoration: none;
+    color: var(--accent-color2-);
+    transition: all linear 0.5s;
+
+}
+
+.link:hover {
+    border-bottom: 0.1em solid var(--accent-color2-);
+}

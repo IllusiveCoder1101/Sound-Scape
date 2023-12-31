@@ -1,0 +1,607 @@
+openapi: 3.0.0
+info:
+  title: SoundScape API
+  description: >
+    <div>
+      
+      <h3> General Description: </h3>
+      <p> 
+          The SoundScape API allows you to interact with the following relations: Song,
+          Playlist and Album . You can perform the following operations:
+      </p>
+      <ol>
+        <h2>CRUD OPERATIONS ON SONG.</h2>
+        <li> > Fetch Song Details given their song Id.</li>
+        <li> > Update Song Details given their song Id.</li>
+        <li> > Delete Song given their song Id, It will also remove them from all the                playlists and albums.</li>
+        <li> > Create new Song based on the given details.</li>
+        <br>
+        <h2>CRUD OPERATIONS ON PLAYLIST.</h2>
+        <li> > Fetch Playlist Details given their playlist Id.</li>
+        <li> > Update Playlist Details given their playlist Id.</li>
+        <li> > Delete Playlist given their playlist Id, It will also remove any songs                  present in that playlist.</li>
+        <li> > Create new Playlist based on the given details.</li>
+        <br>
+        <h2>CRUD OPERATIONS ON ALBUM.</h2>
+        <li> > Fetch Album Details given their album Id.</li>
+        <li> > Update Album Details given their album Id.</li>
+        <li> > Delete Album given their album Id, It will also remove any songs                  present in that album.</li>
+        <li> > Create new Album based on the given details.</li>
+        <p>(NOTE:- The following functionalities are not implemented: viewing                   playlist/albums songs, adding songs to playlists/albums , removing individual           songs from playlists/albums,updating the playlists/album songs.)</p>
+      </ol>
+    </div>
+    <br>
+    <h1> TABLES </h1>
+    <h2> Song Table Schema </h2> 
+    <table>
+      <thead>
+        <th>Column Name</th>
+        <th>Column Type</th>
+        <th>Constraints</th>
+      </thead>
+      <tbody>
+      <tr>
+        <td>song_id</td>
+        <td>Integer</td>
+        <td>Primary Key, Auto Increment</td>
+      </tr>
+      <tr>
+        <td>song_name</td>
+        <td>String</td>
+        <td>Not Null</td>
+      </tr>
+      <tr>
+        <td>song_cover</td>
+        <td>String</td>
+        <td>Not Null</td>
+      </tr>      
+      <tr>
+        <td>song_lyrics</td>
+        <td>String</td>
+        <td>Unique, Not Null</td>
+      </tr>
+       <tr>
+        <td>song_audio</td>
+        <td>String</td>
+        <td>Not Null</td>
+      </tr> 
+       <tr>
+        <td>creator_id_registered</td>
+        <td>Int</td>
+        <td>Foreign Key(creator.creator_id), Not Null</td>
+      </tr> 
+      <tr>
+        <td>creator_name_registered</td>
+        <td>String</td>
+        <td>Foreign Key(creator.creator_name), Not Null</td>
+      </tr> 
+      <tr>
+        <td>no_of_likes</td>
+        <td>int</td>
+        <td>Default(0), Not Null</td>
+      </tr>
+      <tr>
+        <td>keywords</td>
+        <td>String</td>
+        <td>Not Null</td>
+      </tr>
+    </tbody>
+    </table>
+    <br>
+    <h3> Playlist Table Schema </h3> 
+    <table>
+      <thead>
+        <th>Column Name</th>
+        <th>Column Type</th>
+        <th>Constraints</th>
+      </thead>
+      <tbody>
+      <tr>
+        <td>playlist_id</td>
+        <td>Integer</td>
+        <td>Primary Key, Auto Increment</td>
+      </tr>
+      <tr>
+        <td>playlist_name</td>
+        <td>String</td>
+        <td>Not Null</td>
+      </tr>
+      <tr>
+        <td>playlist_cover</td>
+        <td>String</td>
+        <td>Not Null</td>
+      </tr>      
+      <tr>
+        <td>playlist_creator</td>
+        <td>String</td>
+        <td>Foreign Key(users.user_name), Not Null</td>
+      </tr>         
+    </tbody>
+    </table>
+    <br>
+
+    <h3> Album Table Schema </h3> 
+    <table>
+      <thead>
+        <th>Column Name</th>
+        <th>Column Type</th>
+        <th>Constraints</th>
+      </thead>
+      <tbody>
+      <tr>
+        <td>album_id</td>
+        <td>Integer</td>
+        <td>Primary Key, Auto Increment</td>
+      </tr>
+      <tr>
+        <td>album_name</td>
+        <td>String</td>
+        <td>Unique,Not Null</td>
+      </tr>
+      <tr>
+        <td>album_cover</td>
+        <td>String</td>
+        <td>Not Null</td>
+      </tr>      
+      <tr>
+        <td>album_creator</td>
+        <td>String</td>
+        <td>Foreign Key(creator.user_name), Not Null</td>
+      </tr>
+       <tr>
+        <td>album_keywords</td>
+        <td>String</td>
+        <td>Not Null</td>
+      </tr>
+    </tbody>
+    </table>
+    <br>
+
+    <h3> Error Codes </h3> 
+    <table>
+      <thead>
+        <th>Resource</th>
+        <th>Error Code</th>
+        <th>Message</th>
+      </thead>
+      <tbody>
+      <tr>
+        <td>Song</td>
+        <td>SONG001</td>
+        <td>Song Creator Id is required</td>
+      </tr>
+      <tr>
+        <td>Song</td>
+        <td>SONG002</td>
+        <td>Song details are missing</td>
+      </tr>
+      
+      <tr>
+        <td>Playlist</td>
+        <td>PLAYLIST001</td>
+        <td>Playlist Creator Name is required</td>
+      </tr>
+      <tr>
+        <td>Playlist</td>
+        <td>PLAYLIST002</td>
+        <td>Playlist details are missing</td>
+      </tr>
+      
+      <tr>
+        <td>Album</td>
+        <td>ALBUM001</td>
+        <td>Album Creator Name is required</td>
+      </tr>
+      <tr>
+        <td>Album</td>
+        <td>ALBUM002</td>
+        <td>Album details are missing</td>
+      </tr>  
+    </tbody>
+    </table>
+    <br>
+
+  version: 1.0.0
+servers:
+  - url: http://127.0.0.1:5000/
+paths:
+  /api/song/{song_id}:
+    description: End point to read, update and delete a song resource with song_id = song_id.
+    get:
+      description: Operation to Read song resource.
+      parameters:
+        - in: path
+          name: song_id
+          required: true
+          schema:
+            type: integer
+            example: 201
+      responses:
+        '200':
+          description: Request Successful
+          content:
+            application/json:
+              schema:
+                title: course object
+                type: object
+                properties:
+                  song_id:
+                    type: integer
+                    example: 201
+                  creator_id_registered:
+                    type: integer
+                    example: 101
+                  song_name:
+                    type: string
+                    example: XYZ
+                  creator_name_registered:
+                    type: string
+                    example: ABC
+                  likes:
+                    type: integer
+                    example: 5
+        '500':
+          description: Internal Server Error
+        '404':
+          description: Song not found
+
+    put:
+      description: Operation to update the song resource.
+      parameters:
+        - in: path
+          name: song_id
+          required: true
+          schema:
+            type: integer
+            example: 201
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+             
+      
+                song_name:
+                    type: string
+                    example: XYZ
+                song_cover:
+                    type: string
+                    example: xyz.png
+                song_lyrics:
+                    type: string
+                    example: example lyrics
+                song_audio:
+                    type: string
+                    example: xyz.mp3
+                song_keywords:
+                    type: string
+                    example: xyz abc ing mkl
+      responses:
+        '200':
+          description: Successfuly updated
+         
+        '404':
+          description: Song not found
+        '500':
+          description: Internal Server Error
+        
+    delete:
+      description: Operation to delete the song resource
+      parameters:
+        - in: path
+          name: song_id
+          required: true
+          schema:
+            type: integer
+            example: 201
+      responses:
+        '200':
+          description: Successfully Deleted
+        '404':
+          description: Song not found
+        '500':
+          description: Intenal Server Error
+
+  /api/song:
+    description: End point to create song resource
+    post:
+      description: Operation to create the song resource
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                song_name:
+                  type: string
+                  example: XYZ
+                song_cover:
+                  type: string
+                  example: xyz.png
+                song_lyrics:
+                  type: string
+                  example: abcdefgh
+                song_audio:
+                  type: string
+                  example: xyz.mp3
+                song_keywords:
+                  type: string
+                  example: chill nice good
+                song_creator_id:
+                  type: integer
+                  example: 101
+      responses:
+        '201':
+          description: Successfully Created
+          
+        '409':
+          description: Song already exist
+        '404':
+          description: Creator not found
+        '500':
+          description: Internal Server Error
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error_code:
+                    type: string
+                  error_message:
+                    type: string
+  /api/playlist/{playlist_id}:
+    description: Url to read, update and delete the playlist resource.
+    get:
+      description: Operation to read playlist resource
+      parameters:
+        - in: path
+          name: playlist_id
+          required: true
+          schema:
+            type: integer
+            example: 301
+      responses:
+        '200':
+          description: Request Successful
+          content:
+            application/json:
+              schema:
+                title: student object
+                type: object
+                properties:
+                  playlist_id:
+                    type: integer
+                    example: 101
+                  playlist_name:
+                    type: string
+                    example: XYZ
+                  playlist_cover:
+                    type: string
+                    example: xyz.png
+                  playlist_creator:
+                    type: string
+                    example: ABC
+        '500':
+          description: Internal server error
+        '404':
+          description: Playlist not found
+
+    put:
+      description: Operation to update the playlist resource
+      parameters:
+        - in: path
+          name: playlist_id
+          required: true
+          schema:
+            type: integer
+            example: 301
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                playlist_name:
+                  type: string
+                  example: ABC
+                playlist_cover:
+                  type: string
+                  example: abc.png
+               
+      responses:
+        '200':
+          description: Successfully updated
+         
+        '404':
+          description: Playlist not found
+        '500':
+          description: Internal Server Error
+    
+    delete:
+      description: Operation to delete the playlist resource
+      parameters:
+        - in: path
+          name: playlist_id
+          required: true
+          schema:
+            type: integer
+            example: 301
+      responses:
+        '200':
+          description: Successfully Deleted
+        '500':
+          description: Internal Server Error
+        '404':
+          description: Playlist not found
+
+  /api/playlist:
+    description: Url to create playlist resource
+    post:
+      description: Operation to create the playlist resource
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                playlist_name:
+                  type: string
+                  example: XYZ
+                playlist_cover:
+                  type: string
+                  example: xyz.png
+                playlist_creator:
+                  type: string
+                  example: ABC
+      responses:
+        '201':
+          description: Successfully Created
+        '500':
+          description: Internal Server Error
+        '404' :
+          description: Playlist Creator not found
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error_code:
+                    type: string
+                  error_message:
+                    type: string
+
+  /api/album/{album_id}:
+    description: Url to read, update and delete the album resource.
+    get:
+      description: Operation to read album resource
+      parameters:
+        - in: path
+          name: album_id
+          required: true
+          schema:
+            type: integer
+            example: 401
+      responses:
+        '200':
+          description: Request Successful
+          content:
+            application/json:
+              schema:
+                title: student object
+                type: object
+                properties:
+                  album_id:
+                    type: integer
+                    example: 401
+                  album_name:
+                    type: string
+                    example: XYZ
+                  album_cover:
+                    type: string
+                    example: xyz.png
+                  album_creator:
+                    type: string
+                    example: ABC
+        '500':
+          description: Internal server error
+        '404':
+          description: Album not found
+
+    put:
+      description: Operation to update the album resource
+      parameters:
+        - in: path
+          name: album_id
+          required: true
+          schema:
+            type: integer
+            example: 401
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                album_name:
+                  type: string
+                  example: ABC
+                album_cover:
+                  type: string
+                  example: abc.png
+                album_keywords:
+                  type: string
+                  example: ABC XYZ PIJ INO
+               
+      responses:
+        '200':
+          description: Successfully updated
+          
+        '404':
+          description: Album not found
+        '500':
+          description: Internal Server Error
+    
+    delete:
+      description: Operation to delete the album resource
+      parameters:
+        - in: path
+          name: album_id
+          required: true
+          schema:
+            type: integer
+            example: 401
+      responses:
+        '200':
+          description: Successfully Deleted
+        '500':
+          description: Internal Server Error
+        '404':
+          description: Album not found
+
+  /api/album:
+    description: Url to create album resource
+    post:
+      description: Operation to create the album resource
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                album_name:
+                  type: string
+                  example: XYZ
+                album_cover:
+                  type: string
+                  example: xyz.png
+                album_creator:
+                  type: string
+                  example: ABC
+                album_keywords:
+                  type: string
+                  example: ABC XYZ PNG ING
+      responses:
+        '201':
+          description: Successfully Created
+        '500':
+          description: Internal Server Error
+        '404' :
+          description: Album Creator not found
+        '409':
+          description: Album already exists
+        '400':
+          description: Bad request
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error_code:
+                    type: string
+                  error_message:
+                    type: string

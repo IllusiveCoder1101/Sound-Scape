@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@700&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href={{url_for('static',filename="/images/Logo.png")}} type="image/x-icon">
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href={{url_for('static',filename="/css/dashboard.css")}}>
+    <link rel="stylesheet" href={{url_for('static',filename="/css/creator_dashboard.css")}}>
+    <link rel="stylesheet" href={{url_for('static',filename="/css/admin_dashboard.css")}}>
+    <link rel="stylesheet" href={{url_for('static',filename="/css/styles.css")}}>
+    <link rel="stylesheet" href={{url_for('static',filename="/css/add_song.css")}}>
+</head>
+<body>
+    <main class="main1">
+        <aside class="sidebar">
+            <img src={{url_for('static',filename="/images/Logo.png")}} alt="logo" class="logo">
+            <div class="nav-links">
+                <div class="nav1">
+                    <a href="/admin_dashboard" class="link active"><img src={{url_for('static',filename="/images/home.png")}} alt="home_link" class="nav-img"></a>
+                    <a href="/admin_song" class="link modify "><img src={{url_for('static',filename="/images/addsong.png")}} alt="add_song_link" class="nav-img modify-img"></a>
+                    <a href="/admin_album" class="link modify"><img src={{url_for('static',filename="/images/album.png")}} alt="add_song_link" class="nav-img modify-img"></a>
+                    <a href="/admin_creator" class="link "><img src={{url_for('static',filename="/images/creator.png")}} alt="create_album_link" class="nav-img "></a>          
+                </div>
+                <div class="nav2">
+                    <a href="/admin_logout" class="link"><img src={{url_for('static',filename="/images/logout.png")}} alt="logout" class="nav-img"></a>
+                </div>
+            </div>
+        </aside>
+        <section class="admin-panel">
+            <div class="welcome1">
+                <h2 class="title">Welcome, Admin</h2>
+            </div>
+            <div class="stats1">
+                <div class="container3">
+                    <h2 class="title1">Users</h2>
+                    <p class="para1">{{data[0]}}</p>
+                </div>
+                <div class="container3">
+                    <h2 class="title1">Creators</h2>
+                    <p class="para1">{{data[1]}}</p>
+                </div>
+                <div class="container3">
+                    <h2 class="title1">Songs</h2>
+                    <p class="para1">{{data[2]}}</p>
+                </div>
+                <div class="container3">
+                    <h2 class="title1">Playlists</h2>
+                    <p class="para1">{{data[4]}}</p>
+                </div>
+                <div class="container4">
+                    <div class="form_holder">
+                        <form action="/admin_dashboard" method="post">
+                            <select class="input" name="graph_choice" >
+                                <option class="input" value="song">Top Songs</option>
+                                <option class="input" value="album">Top Creators</option>
+                            </select>
+                            <button type="submit" class="btn-1">Submit</button>
+                        </form>
+                        
+                    </div>
+                    {% if ch == "song":%}
+                        <img src={{url_for("static",filename="/images/song.png")}} alt="graph" class="img_graph">
+                    {% endif %}
+                    {% if ch == "album":%}
+                        <img src={{url_for("static",filename="/images/creator_follower.png")}} alt="graph" class="img_graph">
+                    {% endif %}
+                </div>
+                <div class="container3">
+                    <h2 class="title1">Albums</h2>
+                    <p class="para1">{{data[3]}}</p>
+                </div>
+            </div>
+        </section>
+    </main> 
+</body>
+</html>

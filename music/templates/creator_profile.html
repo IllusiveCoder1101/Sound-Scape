@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@700&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href={{url_for('static',filename="/images/Logo.png")}} type="image/x-icon">
+    <title>Creator Profile</title>
+    <link rel="stylesheet" href="../static/css/dashboard.css">
+    <link rel="stylesheet" href="../static/css/creator_dashboard.css">
+    <link rel="stylesheet" href="../static/css/song.css">
+    <link rel="stylesheet" href="../static/css/styles.css">
+    <link rel="stylesheet" href="../static/css/profile.css">
+    <link rel="stylesheet" href="../static/css/playlist.css">
+    <link rel="stylesheet" href="../static/css/creator_profile.css">
+    <link rel="stylesheet" href="../static/css/add_song.css">
+    
+</head>
+<body>
+    <main class="main1">
+        <aside class="sidebar" >
+            <img src="../static/images/Logo.png" alt="logo" class="logo">
+            <div class="nav-links">
+                <div class="nav1">
+                    <a href="/creator_dashboard" class="link"><img src="../static/images/home.png" alt="home_link" class="nav-img"></a>
+                    <a href="/creator_profile" class="link active"><img src="../static/images/profile.png" alt="profile_link" class="nav-img"></a>
+                    <a href="/creator_addsong" class="link modify"><img src="../static/images/addsong.png" alt="add_song_link" class="nav-img modify-img"></a>
+                    <a href="/creator_addalbum" class="link modify"><img src="../static/images/album.png" alt="create_album_link" class="nav-img modify-img"></a>                
+                </div>
+                <div class="nav2">
+                    <a href="/creator_logout" class="link"><img src="../static/images/logout.png" alt="logout" class="nav-img"></a>
+                </div>
+            </div>
+        </aside>
+        <section class="profileboard">
+            <div class="profile">
+                <header class="header">
+                    <h1 class="heading1">My Profile</h1>
+                </header>
+                <div class="profile_container">
+                    <div class="pic_container">
+                        <img src="../static/songcollection/cover/{{data.creator_pic}}" alt="creator_profile_pic" class="profile_pic1">
+                    </div>
+                    
+                    <div class="desc1">
+                        <div class="user-info">
+                            <p class="subtitle1">Creator Name</h2>
+                            <h2 class="title">{{data.creator_name}}</p>
+                        </div>
+                        <div class="user-info">
+                            <p class="subtitle1">Creator Email</h2>
+                            <h2 class="title">{{data.creator_email}}</p>
+                        </div>
+                        <div class="user-info">
+                            <p class="subtitle1">About</h2>
+                            <h2 class="title">{{data.creator_about}}</p>
+                        </div>
+                        <div class="user-info">
+                            <p class="subtitle1">Password</h2>
+                            <h2 class="title">{{data.creator_password}}</p>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+            <div class="profile">
+                <header class="header">
+                    <h1 class="heading1">Edit Profile</h1>
+                </header>
+                <div class="profile_container">
+                    
+                    <form class="desc4" action="/creator_profile" method="post">
+                        <div class="user-info1">
+                            <label class="subtitle1" for="creator_name">Creator name</h2>
+                            <input type="text" name="creator_name" id="creator_name" class="input1 input-modify" placeholder="Enter Creator Name" value="{{data.creator_name}}">
+                        </div>
+                        <div class="user-info1">
+                            <label class="subtitle1" for="creator_email">Creator Email</h2>
+                            <input type="email" name="creator_email" id="creator_email" class="input1 input-modify" placeholder="Enter Creator Email" value={{data.creator_email}}>
+                        </div>
+                        <div class="user-info1">
+                            <label class="subtitle1" for="upload-pic">Upload Profile Pic</h2>
+                            <input type="file" name="upload-pic" id="upload-pic" class="input1 input-modify file-input" accept="image/*">
+                        </div>
+                        <div class="user-info1">
+                            <label class="subtitle1" for="about">About</h2>
+                            <textarea name="creator_about" id="about" class="input6" cols="100" rows="3" placeholder="Let Your fans Know more about you." value={{data.creator_about}}></textarea>
+                        </div>
+                        <div class="user-info1">
+                            <label class="subtitle1">Password</h2>
+                            <input type="password" name="password" id="password" class="input1 input-modify" placeholder="Enter Password" value={{data.creator_password}}>
+                        </div>
+                        {% if error:%}
+                            <p class="error_message">{{error}}</p>
+                        {% endif %}
+                        <div class="btns">
+                            <button type="submit" class="btn-1">Update</button>
+                        </div>
+                    </form>
+                </div>
+                
+            </div>
+        </section>
+    </main>
+    
+</body>
+</html>

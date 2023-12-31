@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@700&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href={{url_for('static',filename="/images/Logo.png")}} type="image/x-icon">
+    <title>User Dashboard</title>
+    <link rel="stylesheet" href="../static/css/dashboard.css">
+    <link rel="stylesheet" href="../static/css/styles.css">
+</head>
+<body>
+    <main class="main1">
+        <aside class="sidebar">
+            <img src="../static/images/Logo.png" alt="logo" class="logo">
+            <div class="nav-links">
+                <div class="nav1">
+                    <a href="/user_dashboard" class="link active"><img src="../static/images/home.png" alt="home_link" class="nav-img"></a>
+                    <a href="/user_profile" class="link"><img src="../static/images/profile.png" alt="profile_link" class="nav-img"></a>
+                    <a href="/user_createplaylist" class="link"><img src="../static/images/playlist.png" alt="create_playlist_link" class="nav-img"></a>
+                    <a href="/creator_account" class="link"><img src="../static/images/creator.png" alt="creator_register_link" class="nav-img"></a>                
+                </div>
+                <div class="nav2">
+                    <a href="/user_logout" class="link"><img src="../static/images/logout.png" alt="logout" class="nav-img"></a>
+                </div>
+            </div>
+        </aside>
+        <section class="dashboard">
+            <div class="welcome-container">
+                <h1 class="dashboardHeading">Welcome, {{name}}</h1>
+            </div>
+            <div class="header1">
+                
+                <h2 class="subheading">Songs</h2>
+                <div class="search">
+                
+                    <form action="/user_dashboard" method="post" class="search-form">
+                        <input type="text" class="input" name="search_song" placeholder="Search For Songs">
+                        <button type="submit" class="btn-1 ">Search</button>
+                    </form>
+                    {%if  error == "song" :%}
+                        <p class="error_message">No Search Results Found.</p>
+                    {%endif%}
+                </div>
+            </div>
+            <h3 class="title2">Keywords:</h3>
+            <div class="taglist">
+                
+                {% for i in song_tags:%}
+                    <div class="tags">
+                        <p class="para1">{{i}}</p>
+                    </div>
+                {% endfor %}
+            </div>
+            <div class="songsection">
+ 
+                {% for i in song:%}
+                    {% for j in i:%}
+                        <div class="songcontainer">
+                            <img src="../static/songcollection/cover/{{j.song_cover}}" alt="song_cover" class="cover-img">
+                            <a href="/song/user/{{j.song_id}}" class="play"><img src="../static/images/play.png" alt="play" ></a>
+                            <div class="subsection">
+                                <h2 class="title">{{j.song_name}}</h2>
+                                <p class="subtitle1">{{j.creator_name_registered}}</p>
+                            </div>
+                        </div>
+                    {%endfor%}
+                {% endfor%}
+                
+            </div>
+            <div class="header1">
+                <h2 class="subheading">Creators</h2>
+            </div>
+            <div class="songsection">
+                {% for i in followed_creator:%}
+                    <div class="songcontainer">
+                        <img src="../static/songcollection/cover/{{i.creator_pic}}" alt="creator-img" class="creator-img">
+                        <div class="subsection">
+                            <h2 class="title">{{i.creator_name}}</h2>
+                            <a href="/unfollow/{{user_id}}/{{i.creator_id}}" class="btn-2">Following</a>
+                        </div>
+                    </div>
+                {% endfor%}
+                {% for i in unfollowed_creator:%}
+                    <div class="songcontainer">
+                        <img src="../static/songcollection/cover/{{i.creator_pic}}" alt="creator-img" class="creator-img">
+                        <div class="subsection">
+                            <h2 class="title">{{i.creator_name}}</h2>
+                            <a href="/follow/{{user_id}}/{{i.creator_id}}" class="btn-1">Follow</a>
+                        </div>
+                    </div>
+                {% endfor%}
+                
+            </div>
+            <div class="header1">
+                
+                <h2 class="subheading">Albums</h2>
+                <div class="search">
+                
+                    <form action="/user_dashboard" method="post" class="search-form">
+                        <input type="text" class="input" name="search_album" placeholder="Search For Albums">
+                        <button type="submit" class="btn-1 ">Search</button>
+                    </form>
+                    {%if  error == "album" :%}
+                        <p class="error_message">No Search Results Found.</p>
+                    {%endif%}
+                </div>
+            </div>
+            <h3 class="title2">Keywords:</h3>
+            <div class="taglist">
+                {% for i in album_tags:%}
+                    <div class="tags">
+                        <p class="para1">{{i}}</p>
+                    </div>
+                {% endfor %}
+            </div>
+            <div class="songsection">
+                {% for i in album:%}
+                    {%for j in i:%}
+                        <div class="songcontainer">
+                            <img src="../static/songcollection/cover/{{j.album_cover}}" alt="album_cover" class="cover-img">
+                            <a href="/album/user/{{j.album_id}}" class="play"><img src="../static/images/play.png" alt="play" ></a>
+                            <div class="subsection">
+                                <h2 class="title">{{j.album_name}}</h2>
+                                <p class="subtitle1">{{j.album_creator}}</p>
+                            </div>
+                        </div>
+                    {% endfor %}
+                {% endfor%}
+                
+            </div>
+           
+                
+            <div class="header1">
+                <h2 class="subheading">Playlists</h2>
+            </div>
+            <div class="songsection">
+                {%for i in playlist:%}
+                    <div class="songcontainer">
+                        <img src="../static/songcollection/cover/{{i.playlist_cover}}" alt="playlist_cover" class="cover-img">
+                        <a href="/playlist/{{i.playlist_id}}" class="play"><img src="../static/images/play.png" alt="play" ></a>
+                        <div class="subsection">
+                            <h2 class="title">{{i.playlist_name}}</h2>
+                            <p class="subtitle1">{{i.playlist_creator}}</p>
+                        </div>
+                    </div>
+                {%endfor%}
+                
+            </div>
+            <div class="header1">
+                <h2 class="subheading">Your Playlists</h2>
+            </div>
+            <div class="songsection">
+                {% for i in your_playlist:%}
+                    <div class="songcontainer">
+                        <img src="../static/songcollection/cover/{{i.playlist_cover}}" alt="playlist_cover" class="cover-img">
+                        <a href="/playlist/{{i.playlist_id}}" class="play"><img src="../static/images/play.png" alt="play" ></a>
+                        <div class="subsection">
+                            <h2 class="title">{{i.playlist_name}}</h2>
+                            <div class="btn-list">
+                                <a href="/playlist/update/{{i.playlist_id}}" class="btn-1">Update</a>
+                                <a href="/playlist/delete/{{i.playlist_id}}" class="btn-2">Delete</a>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor%}
+                
+            </div>
+        </section>
+    </main>
+    
+</body>
+</html>

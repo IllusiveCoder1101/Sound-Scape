@@ -1,0 +1,138 @@
+* {
+    --primary-color-: #393E46;
+    --secondary-color1-: #EEEEEE;
+    --secondary-color2-: #222831;
+    --accent-color1-: #00ADB5;
+    --accent-color2-: #83D8DC;
+    --accent-color3-: #076267;
+    --accent-color4-: #393E46;
+}
+
+.songboard {
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+
+
+    background: url("../images/loginbg.png");
+    background-size: cover;
+}
+
+.section1 {
+    width: 70%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 1em;
+}
+
+.songcontainer1,
+.lyricscontainer,
+.audioplayer {
+    display: flex;
+    flex-direction: column;
+    padding: 1em;
+    margin: 5em -2em 0;
+    width: 100%;
+    border: 0.2em solid var(--secondary-color1-);
+    border-radius: 1em;
+
+}
+
+.songcontainer1,
+.lyricscontainer {
+    background: linear-gradient(141deg, rgba(57, 62, 70, 0.60) 1.83%, rgba(57, 62, 70, 0.10) 100%);
+    backdrop-filter: blur(0.2em);
+}
+
+.desc {
+    margin: 1em auto;
+}
+
+.desc {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+audio {
+    width: 100%;
+}
+
+.audioplayer {
+    width: 100%;
+    padding: 1em;
+    margin: 1.2em -2em;
+    border: 0.2em solid var(--accent-color2-);
+    background-color: var(--secondary-color1-);
+}
+
+.lyricscontainer {
+
+    width: 70%;
+    height: 40vh;
+    margin: 1em 2em;
+    white-space: pre-wrap;
+
+}
+
+.cover-img1 {
+    width: 95%;
+    aspect-ratio: 3/3.4;
+    object-fit: cover;
+    align-self: center;
+    border-radius: 1em;
+    margin: 1em 0 0 0;
+}
+
+.para {
+    color: var(--secondary-color1-)
+}
+
+.heading2 {
+    color: var(--secondary-color1-);
+    font-family: Barlow;
+    font-size: 2em;
+    text-decoration: underline;
+    text-align: center;
+}
+
+.subsection2 {
+    overflow-y: scroll;
+    margin: 0.7em 0;
+    padding: 1em;
+}
+
+
+@media screen and (min-width:1024px) {
+    .songboard {
+        flex-direction: row;
+        align-items: start;
+        justify-content: center;
+        gap: 2em;
+        height: 100vh;
+    }
+
+    .section1 {
+        width: 25%;
+    }
+
+    .songcontainer1,
+    .lyricscontainer,
+    .audioplayer {
+        margin: 4em 2em 0;
+    }
+
+    .audioplayer {
+        margin: 1em 2em 0;
+    }
+
+    .lyricscontainer {
+        width: 40%;
+        height: 80vh;
+
+    }
+}

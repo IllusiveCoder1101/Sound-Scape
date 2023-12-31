@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@700&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href={{url_for('static',filename="/images/Logo.png")}} type="image/x-icon">
+    <title>Admin Creator</title>
+    <link rel="stylesheet" href={{url_for('static',filename="/css/dashboard.css")}}>
+    <link rel="stylesheet" href={{url_for('static',filename="/css/creator_dashboard.css")}}>
+    <link rel="stylesheet" href={{url_for('static',filename="/css/admin_song.css")}}>
+    <link rel="stylesheet" href={{url_for('static',filename="/css/admin_creator.css")}}>
+    <link rel="stylesheet" href={{url_for('static',filename="/css/styles.css")}}>
+    <link rel="stylesheet" href={{url_for('static',filename="/css/add_song.css")}}>
+</head>
+<body>
+    <main class="main1">
+        <aside class="sidebar">
+            <img src={{url_for('static',filename="/images/Logo.png")}} alt="logo" class="logo">
+            <div class="nav-links">
+                <div class="nav1">
+                    <a href="/admin_dashboard" class="link "><img src={{url_for('static',filename="/images/home.png")}} alt="home_link" class="nav-img"></a>
+                    <a href="/admin_song" class="link modify "><img src={{url_for('static',filename="/images/addsong.png")}} alt="add_song_link" class="nav-img modify-img"></a>
+                    <a href="/admin_album" class="link modify "><img src={{url_for('static',filename="/images/album.png")}} alt="add_song_link" class="nav-img modify-img"></a>
+                    <a href="/admin_creator" class="link active"><img src={{url_for('static',filename="/images/creator.png")}} alt="create_album_link" class="nav-img "></a>                
+                </div>
+                <div class="nav2">
+                    <a href="/admin_logout" class="link"><img src={{url_for('static',filename="/images/logout.png")}} alt="logout" class="nav-img"></a>
+                </div>
+            </div>
+        </aside>
+        <section class="creator_dashboard">
+         
+            <div class="header1">
+                <h2 class="subheading">Creators</h2>
+            </div>
+            <div class="songsection1">
+                {% for i in data:%}
+                    <div class="songcontainer1">
+                        <div class="primary">
+                            <img src={{url_for('static',filename='/songcollection/cover/'+i.creator_pic)}} alt="creator_profile_pic" class="cover-img2">
+                        
+                            <div class="subsection1">
+                                <h2 class="title1">{{i.creator_name}}</h2>
+                                <p class="para1">{{i.creator_email}}</p>
+                                
+                            
+                            </div>
+                            
+                        </div>
+                        <div class="secondary1">
+                            <div class="songs-albums-container">
+                                <div class="songs-holder">
+                                    <h2 class="title">Songs</h2>
+                                    <div class="songs-inner">
+                                        {% if not i.creator_songs:%}
+                                            <p class="validation_message">No Songs Found</p>
+                                        {%endif%}
+                                        {% for j in i.creator_songs:%}
+                                            <div class="song2">
+                                                <img src={{url_for('static',filename="/songcollection/cover/"+j.song_cover)}} alt="song_cover" class="cover-img1">
+                                                <p class="para1">{{j.song_name}}</p>
+                                            </div>
+                                        {% endfor%}
+
+                                    </div>
+                                </div>
+                            
+                                <div class="album-holder">
+                                    <h2 class="title">Albums</h2>
+                                    <div class="albums-inner">
+                                        {% if not i.creator_album:%}
+                                            <p class="validation_message">No Albums Found</p>
+                                        {%endif%}
+                                        {% for k in i.creator_album:%}
+                                            <div class="song2">
+                                                <img src={{url_for('static',filename="/songcollection/cover/"+k.album_cover)}} alt="album_cover" class="cover-img1">
+                                                <p class="para1">{{k.album_name}}</p>
+                                            </div>
+                                        {%endfor%}
+                                 
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        
+                        </div>
+                        <div class="btns">
+                            {% if i.blacklist == "True":%}
+                                <a href="/whitelist/{{i.creator_id}}" class="btn-1 modify-btn">Whitelist</a>
+                            {% endif %}
+                            {% if  i.blacklist == "False" :%}
+                                <a href="/blacklist/{{i.creator_id}}" class="btn-2 modify-btn">Blacklist</a>
+                            {% endif %}
+                        </div>
+                    </div>
+                {% endfor%}
+                
+            </div>
+        </section>
+    </main>
+    
+</body>
+</html>

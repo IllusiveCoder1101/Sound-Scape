@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@700&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href={{url_for('static',filename="/images/Logo.png")}} type="image/x-icon">
+    <title>Admin Album</title>
+    <link rel="stylesheet" href={{url_for('static',filename="/css/dashboard.css")}}>
+    <link rel="stylesheet" href={{url_for('static',filename="/css/creator_dashboard.css")}}>
+    <link rel="stylesheet" href={{url_for('static',filename="/css/admin_song.css")}}>
+    <link rel="stylesheet" href={{url_for('static',filename="/css/admin_album.css")}}>
+    <link rel="stylesheet" href={{url_for('static',filename="/css/styles.css")}}>
+    <link rel="stylesheet" href={{url_for('static',filename="/css/add_song.css")}}>
+</head>
+<body>
+    <main class="main1">
+        <aside class="sidebar">
+            <img src={{url_for('static',filename="/images/Logo.png")}} alt="logo" class="logo">
+            <div class="nav-links">
+                <div class="nav1">
+                    <a href="/admin_dashboard" class="link "><img src={{url_for('static',filename="/images/home.png")}} alt="home_link" class="nav-img"></a>
+                    <a href="/admin_song" class="link modify "><img src={{url_for('static',filename="/images/addsong.png")}} alt="add_song_link" class="nav-img modify-img"></a>
+                    <a href="/admin_album" class="link modify active"><img src={{url_for('static',filename="/images/album.png")}} alt="add_song_link" class="nav-img modify-img"></a>
+                    <a href="/admin_creator" class="link "><img src={{url_for('static',filename="/images/creator.png")}} alt="create_album_link" class="nav-img "></a>                
+                </div>
+                <div class="nav2">
+                    <a href="/admin_logout" class="link"><img src={{url_for('static',filename="/images/logout.png")}} alt="logout" class="nav-img"></a>
+                </div>
+            </div>
+        </aside>
+        <section class="creator_dashboard">
+
+            <div class="header1">
+                <h2 class="subheading">Albums</h2>
+            </div>
+            <div class="songsection1">
+                {% for i in data:%}
+                    <div class="songcontainer1">
+                        <div class="primary">
+                            <img src={{url_for('static',filename='/songcollection/cover/'+i.album_cover)}} alt="album_cover" class="cover-img1">
+                        
+                            <div class="subsection1">
+                                <h2 class="title">{{i.album_name}}</h2>
+                                <p class="para1">{{i.album_creator}}</p>
+                            
+                            
+                            </div>
+                            
+                        </div>
+                        <div class="secondary">
+                            <div class="songs-holder">
+                                <h2 class="title">Songs</h2>
+                                <div class="songs-inner">
+                                    {% for j in i.album_songs:%}
+                                        <div class="song">
+                                            <img src={{url_for('static',filename="/songcollection/cover/"+j.song_cover)}} alt="song_cover" class="cover-img2">
+                                            <p class="para1">{{j.song_name}}</p>
+                                        </div>
+                                    {% endfor%}
+                                    
+                                </div>
+                            </div>
+                            <a href="/album/admin/delete/{{i.album_id}}" class="btn-2 modify-btn">Remove</a>
+                        </div>
+                    </div>
+                {%endfor%}
+            </div>
+        </section>
+    </main>
+    
+</body>
+</html>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@700&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href={{url_for('static',filename="/images/Logo.png")}} type="image/x-icon">
+    <title>Create Album</title>
+    <link rel="stylesheet" href={{url_for('static',filename="/css/dashboard.css")}}>
+    <link rel="stylesheet" href={{url_for('static',filename="/css/styles.css")}}>
+    <link rel="stylesheet" href={{url_for('static',filename="/css/album.css")}}>
+    <link rel="stylesheet" href={{url_for('static',filename="/css/playlist.css")}}>
+    <link rel="stylesheet" href={{url_for('static',filename="/css/add_song.css")}}>
+</head>
+<body>
+    <main class="main1">
+        <aside class="sidebar">
+            <img src={{url_for('static',filename="/images/logo.png")}} alt="logo" class="logo">
+            <div class="nav-links">
+                
+                <div class="nav1">
+                    <a href="/creator_dashboard" class="link "><img src={{url_for('static',filename="/images/home.png")}} alt="home_link" class="nav-img"></a>
+                    <a href="/creator_profile" class="link"><img src={{url_for('static',filename="/images/profile.png")}} alt="profile_link" class="nav-img"></a>
+                    <a href="/creator_addsong" class="link modify"><img src={{url_for('static',filename="/images/addsong.png")}} alt="add_song_link" class="nav-img modify-img"></a>
+                    <a href="/creator_addalbum" class="link modify active"><img src={{url_for('static',filename="/images/album.png")}} alt="create_album_link" class="nav-img modify-img"></a>                
+                </div>
+                <div class="nav2">
+                    <a href="/creator_logout" class="link"><img src={{url_for('static',filename="/images/logout.png")}} alt="logout" class="nav-img"></a>
+                </div>
+             
+            </div>
+        </aside>
+        <section class="playlistdashboard">
+            <div class="playlistformcontainer">
+                <h1 class="heading2">Create Album</h1>
+                <form action="" method="post" class="form_container" >
+                    <div class="form_contain1">
+                        <div class="form_section">
+                            <div class="form_part">
+                                <label for="album_name" class="label">Album Name</label>
+                                <input type="text" placeholder="Enter Album Name" name="album_name" id="album_name" class="input1" required>
+                            </div>
+                            <div class="form_part">
+                                <label for="album_cover" class="label">Album Cover</label>
+    
+                                <input type="file" name="album_cover" id="album_cover" class="input1 file-input" accept="image/*" required>
+                            </div>
+                            <div class="form_part">
+                                <label for="album_keywords" class="label">Album Keywords</label>
+                                <input type="text" placeholder="Enter Album Keywords (Space seperated)" name="album_keywords" id="album_name" class="input1" required>
+                            </div>
+                        </div>
+                        <div class="form_section1">
+                            <label class="label">Choose Songs</label>
+                            <div class="songcollection">
+                                
+                                {% for i in song:%}
+                                    <div class="songlist">
+                                        <div class="song_collect">
+                                            <img src={{url_for('static',filename="/songcollection/cover/"+i.song_cover)}} alt="song_cover" class="song_cover">
+                                            <div class="song_desc1">
+                                                <h2 class="title1">{{i.song_name}}</h2>
+                                                <p class="para1">{{i.creator_name_registered}}</p>
+                                            </div>
+                                        </div>
+                                        <input type="checkbox" name="song" id="song_selector" class="song_selector" value={{i.song_id}}>
+                                    </div>
+                                {% endfor%}
+                                
+                            </div>
+                        </div>
+                    </div>
+                    {% if error:%}
+                        <p class="error_message">{{error}}</p>
+                    {% endif %}
+                    <div class="form_submit">
+                        <button type="submit" class="btn-1">Upload</button>
+                    </div>
+                </form>
+            </div>
+        </section>
+    </main>
+    
+</body>
+</html>

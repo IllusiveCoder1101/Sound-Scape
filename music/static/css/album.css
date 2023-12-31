@@ -1,0 +1,32 @@
+.songcontainer2 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-bottom: 0.3em solid var(--accent-color2-);
+    background-color: var(--secondary-color2-);
+    padding: 1em;
+
+}
+
+.songicon {
+    width: 3em;
+    border-radius: 50%;
+    margin: 0 0.5em 0 0em
+}
+
+.title1 {
+    font-family: barlow;
+    color: var(--secondary-color1-);
+    font-size: 1em;
+}
+
+.para1 {
+    font-family: Inter;
+    font-size: 0.9em;
+    color: var(--secondary-color1-);
+}
+
+.form_section2 {
+
+    width: 70%;
+}

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@700&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href={{url_for('static',filename="/images/Logo.png")}} type="image/x-icon">
+    <title>Admin Login</title>
+    <link rel="stylesheet" href={{url_for('static',filename="/css/loginstyles.css")}}>
+    <link rel="stylesheet" href={{url_for('static',filename="/css/styles.css")}}>
+</head>
+<body>
+    <nav class="nav">
+        <img src={{url_for('static',filename="/images/Logo.png")}} alt="logo">
+    </nav>
+    <main class="login">
+        <div class="formContainer">
+            <h1 class="formHeader">Admin Login</h1>
+            <form action="/admin_login" method="post" class="form">
+                <label for="email" class="label">Email</label>
+                <input type="email" name="email" id="email" placeholder="Enter Email" class="input" required>
+                <label for="password" class="label">Password</label>
+                <input type="password" name="password" id="password" placeholder="Enter Password" class="input" required>
+                {% if error:%}
+                    <p class="error_message">{{error}}</p>
+                {% endif %}
+                <div class="btn">
+                    <a href="/" class="btn-2 submit">Back</a>
+                    <button type="submit" class="btn-1 submit">Log In</button>
+                    
+                </div>
+            </form>
+            
+        </div>
+        
+    </main>
+    <footer class="footer">
+        <a href="/" class="social">
+            <img src={{url_for('static',filename="/images/facebook.png")}} alt="facebook">
+        </a>
+        <a href="/" class="social">
+            <img src={{url_for('static',filename="/images/insta.png")}} alt="insta">
+        </a>
+        <a href="/" class="social">
+            <img src={{url_for('static',filename="/images/linkedin.png")}} alt="linedkin">
+        </a>
+        <a href="/" class="social">
+            <img src={{url_for('static',filename="/images/x.png")}} alt="x">
+        </a>
+    </footer>
+</body>
+</html>

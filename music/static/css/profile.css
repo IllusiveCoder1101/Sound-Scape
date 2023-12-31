@@ -1,0 +1,91 @@
+* {
+    --primary-color-: #393E46;
+    --secondary-color1-: #EEEEEE;
+    --secondary-color2-: #222831;
+    --accent-color1-: #00ADB5;
+    --accent-color2-: #83D8DC;
+    --accent-color3-: #076267;
+    --accent-color4-: #393E46;
+}
+
+.error_message {
+    align-self: center;
+}
+
+.profileboard {
+    width: 100%;
+
+    display: flex;
+    flex-direction: row;
+    height: 100vh;
+    justify-content: center;
+    gap: 1em;
+    background: url("../images/loginbg.png");
+    background-size: cover;
+}
+
+.header {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 0.5em;
+    color: var(--secondary-color1-);
+    font-family: Barlow;
+    font-size: 1.5em;
+    border-bottom: 0.1em solid var(--accent-color2-)
+}
+
+.profile_container,
+.desc2 {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.profile {
+    width: 90%;
+    max-width: 30em;
+    display: flex;
+    flex-direction: column;
+    gap: 1.2em;
+    border-radius: 25px;
+    border: 0.1em solid var(--secondary-color2-);
+    background: linear-gradient(141deg, rgba(57, 62, 70, 0.60) 1.83%, rgba(57, 62, 70, 0.10) 100%);
+
+    margin: 3em 0;
+    backdrop-filter: blur(0.2em);
+}
+
+.pic_container {
+    align-self: center;
+}
+
+.profile_pic1 {
+    width: 14em;
+    aspect-ratio: 3/3;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.desc1,
+.desc4 {
+    margin: 1em 2em 0em;
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+}
+
+.desc4 {
+    margin: 0 2em;
+
+}
+
+.btns {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.input-modify {
+    margin: 0.5em 0 0;
+}

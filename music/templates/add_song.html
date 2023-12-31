@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@700&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href={{url_for('static',filename="/images/Logo.png")}} type="image/x-icon">
+    <title>Create Song</title>
+    <link rel="stylesheet" href={{url_for('static',filename="/css/dashboard.css")}}>
+    <link rel="stylesheet" href={{url_for('static',filename='/css/styles.css')}}>
+    <link rel="stylesheet" href={{url_for('static',filename="/css/add_song.css")}}>
+    <link rel="stylesheet" href={{url_for('static',filename="/css/playlist.css")}}>
+</head>
+<body>
+    <main class="main1">
+        <aside class="sidebar">
+            <img src={{url_for('static',filename='/images/Logo.png')}} alt="logo" class="logo">
+            <div class="nav-links">
+                <div class="nav1">
+                    <a href="/creator_dashboard" class="link"><img src={{url_for('static',filename='/images/home.png')}} alt="home_link" class="nav-img"></a>
+                    <a href="/creator_profile" class="link"><img src={{url_for('static',filename='/images/profile.png')}} alt="profile_link" class="nav-img"></a>
+                    <a href="/creator_addsong" class="link active modify"><img src={{url_for('static',filename='/images/addsong.png')}} alt="create_song_link" class="nav-img modify-img"></a>
+                    <a href="/creator_addalbum" class="link modify"><img src={{url_for('static',filename='/images/album.png')}} alt="create_album_link" class="nav-img modify-img"></a>                
+                </div>
+                <div class="nav2">
+                    <a href="/creator_logout" class="link"><img src={{url_for('static',filename='/images/logout.png')}} alt="logout" class="nav-img"></a>
+                </div>
+            </div>
+        </aside>
+        <section class="addsongdashboard">
+           <div class="addsongcontainer">
+                <h1 class="heading3">Add New Song</h1>
+                <form action="/creator_addsong" class="formcontainer"  method="post">
+                    <div class="form_contain">
+                        <label for="song_name" class="label">Song Name</label>
+                        <input type="text" name="song_name" id="song_name" class="input3" placeholder="Enter Song Name" required>
+                        <label for="song_cover" class="label">Song Cover</label>
+                        <input type="file" name="song_cover" id="song_cover" class="input4 file-input" accept="image/*" required>
+                        <label for="song_audio" class="label">Song Audio</label>
+                        <input type="file" name="song_audio" id="song_audio" class="input4 file-input" accept="audio/*" required>
+                        <label for="song_keywords" class="label">Keywords</label>
+                        <input type="text" name="song_keywords" id="song_name" class="input3" placeholder="Keywords For Song (Space Seperated)" required>
+                        <label for="song_lyrics" class="label">Song Lyrics</label>
+                        <textarea name="song_lyrics" id="song_lyrics"  class="input2 lyricsinput" placeholder="Enter Song Lyrics"  rows="7" required></textarea>
+                    
+                    </div>
+                    {% if error:%}
+                        <p class="error_message">{{error}}</p>
+                    {% endif %}
+                    <button class="btn-1" type="submit">Upload</button>
+                </form>
+           </div>
+        </section>
+    </main>
+    
+</body>
+</html>

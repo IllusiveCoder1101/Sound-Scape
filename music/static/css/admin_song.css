@@ -1,0 +1,99 @@
+.songcontainer1 {
+    display: flex;
+    flex-direction: row;
+
+
+
+    min-width: 13em;
+    width: 40%;
+    padding: 1em 1em 0;
+    border-radius: 1em;
+    background: linear-gradient(141deg, rgba(57, 62, 70, 0.60) 1.83%, rgba(57, 62, 70, 0.10) 100%);
+    border: 0.1em solid var(--secondary-color1-);
+
+}
+
+.primary {
+    width: 50%;
+}
+
+.secondary {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    width: 50%;
+}
+
+.cover-img1 {
+    border-bottom-left-radius: 1em;
+    border-bottom-right-radius: 1em;
+    margin: -1em 0 0;
+    width: 90%;
+    aspect-ratio: 3/3;
+    object-fit: cover;
+    max-width: 16em;
+    box-shadow: 8px 8px 32px 0px rgba(0, 0, 0, 0.25);
+}
+
+.lyrics {
+    height: 18em;
+    padding: 0.5em;
+    overflow-y: scroll;
+    margin: 0.5em 0 1em;
+    white-space: pre-wrap;
+}
+
+.songsection1 {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 3em;
+    margin: 1em 0 5em;
+}
+
+.subsection1 {
+
+    margin: 0.5em 0em;
+}
+
+.para1 {
+    font-family: Inter;
+    font-size: 1em;
+    color: var(--secondary-color1-);
+    margin: 0.3em 0 0;
+}
+
+.audio {
+    width: 90%;
+    background-color: var(--secondary-color1-);
+    border-top-right-radius: 1em;
+    border-top-left-radius: 1em;
+    margin: 0.8em 0 -0.5em 0;
+}
+
+audio {
+    width: 100%;
+    margin: 1em 0;
+}
+
+.songcontainer1:hover {
+    background-color: var(--secondary-color2-);
+}
+
+.modify-btn {
+    align-self: flex-end;
+}
+
+
+
+.title1 {
+    font-family: Barlow;
+    color: var(--secondary-color1-);
+    font-size: 1.5em
+}
+
+.desc3 {
+    display: flex;
+    width: 90%;
+    justify-content: space-between;
+}

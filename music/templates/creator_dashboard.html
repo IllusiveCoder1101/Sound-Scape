@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@700&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href={{url_for('static',filename="/images/Logo.png")}} type="image/x-icon">
+    <title>Creator Dashboard</title>
+    <link rel="stylesheet" href={{url_for('static',filename="/css/dashboard.css")}}>
+    <link rel="stylesheet" href={{url_for('static',filename="/css/creator_dashboard.css")}}>
+    <link rel="stylesheet" href={{url_for('static',filename="/css/styles.css")}}>
+    <link rel="stylesheet" href={{url_for('static',filename="/css/add_song.css")}}>
+</head>
+<body>
+    <main class="main1">
+        <aside class="sidebar">
+            <img src={{url_for('static',filename="/images/Logo.png")}} alt="logo" class="logo">
+            <div class="nav-links">
+                <div class="nav1">
+                    <a href="/creator_dashboard" class="link active"><img src={{url_for('static',filename="/images/home.png")}} alt="home_link" class="nav-img"></a>
+                    <a href="/creator_profile" class="link"><img src={{url_for('static',filename="/images/profile.png")}} alt="profile_link" class="nav-img"></a>
+                    <a href="/creator_addsong" class="link modify"><img src={{url_for('static',filename="/images/addsong.png")}} alt="add_song_link" class="nav-img modify-img"></a>
+                    <a href="/creator_addalbum" class="link modify"><img src={{url_for('static',filename="/images/album.png")}} alt="create_album_link" class="nav-img modify-img"></a>                
+                </div>
+                <div class="nav2">
+                    <a href="/creator_logout" class="link"><img src={{url_for('static',filename="/images/logout.png")}} alt="logout" class="nav-img"></a>
+                </div>
+            </div>
+        </aside>
+        <section class="creator_dashboard">
+            <div class="welcome">
+                <h1 class="dashboardHeading">Welcome, {{name}}</h1>
+                {% if blacklist == "True":%}
+                    <div class="blacklist-tag">
+                        <p class="blacklist">Blacklisted</p>
+                    </div>
+                {% endif%}
+            </div>
+            <div class="stats_container">
+                <div class="container1">
+                    <div class="stats">
+                        <h1 class="title">Songs</h1>
+                        <p class="para1">{{no_of_songs}}</p>
+                    </div>
+                </div>
+                <div class="container1">
+                    <div class="stats">
+                        <h1 class="title">Albums</h1>
+                        <p class="para1">{{no_of_albums}}</p>
+                    </div>
+                </div>
+                <div class="container1">
+                    <div class="stats">
+                        <h1 class="title">Followers</h1>
+                        <p class="para1">{{no_of_followers}}</p>
+                    </div>
+                </div>
+            </div>
+           
+            <div class="header1">
+                <h2 class="subheading">Your Songs</h2>
+            </div>
+            <div class="songsection">
+                {% for i in song:%}
+                    <div class="songcontainer">
+                        <img src={{url_for('static',filename="/songcollection/cover/"+i.song_cover)}} alt="song_cover" class="cover-img">
+                        <a href="/song/creator/{{i.song_id}}" class="play"><img src={{url_for('static',filename="/images/play.png")}} alt="play" ></a>
+                        <div class="subsection">
+                            <div class="desc2">
+                                <h2 class="title1">{{i.song_name}}</h2>
+                                <div class="likes">
+                                    <img src={{url_for('static',filename="/images/filled_like.png")}} alt="like">
+                                    {%if i.no_of_likes !=0 :%}
+                                        <p class="para1">{{i.no_of_likes}}</p>
+                                    {%endif%}
+                                </div>
+                            </div>
+                            
+                            <div class="btn-list">
+                                <a href="/song/update/{{i.song_id}}" class="btn-1">Update</a>
+                                <a href="/song/creator/delete/{{i.song_id}}" class="btn-2">Delete</a>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor%}
+                
+            </div>
+            
+            <div class="header1">
+                <h2 class="subheading">Your Albums</h2>
+            </div>
+            <div class="songsection">
+                {% for i in album:%}
+                    <div class="songcontainer">
+                        <img src={{url_for('static',filename='/songcollection/cover/'+i.album_cover)}} alt="album_cover" class="cover-img">
+                        <a href="/album/creator/{{i.album_id}}" class="play"><img src={{url_for('static',filename='/images/play.png')}} alt="play" ></a>
+                        <div class="subsection">
+                            <h2 class="title">{{i.album_name}}</h2>
+                            <div class="btn-list">
+                                <a href="/album/update/{{i.album_id}}" class="btn-1">Update</a>
+                                <a href="/album/creator/delete/{{i.album_id}}" class="btn-2">Delete</a>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor%}
+                
+            </div>
+            
+            </div>
+        </section>
+    </main>
+    
+</body>
+</html>

@@ -1,0 +1,200 @@
+* {
+    --primary-color-: #393E46;
+    --secondary-color1-: #EEEEEE;
+    --secondary-color2-: #222831;
+    --accent-color1-: #00ADB5;
+    --accent-color2-: #83D8DC;
+    --accent-color3-: #076267;
+    --accent-color4-: #393E46;
+    --error-color-: rgb(250, 40, 40);
+}
+
+.error_message {
+    font-family: Inter;
+    font-size: 1.2em;
+    color: var(--error-color-);
+    text-align: center;
+}
+
+
+.playlistdashboard {
+    width: 100%;
+    height: 100%;
+    min-height: 100vh;
+    background: url("../images/loginbg.png");
+    display: flex;
+    background-size: cover;
+    justify-content: center;
+    align-items: center;
+}
+
+.playlistformcontainer {
+    width: 90%;
+    max-width: 60em;
+    gap: 1.2em;
+    border-radius: 25px;
+    border: 0.1em solid var(--secondary-color2-);
+    background: linear-gradient(141deg, rgba(57, 62, 70, 0.60) 1.83%, rgba(57, 62, 70, 0.10) 100%);
+    align-items: center;
+    margin: 5em 0;
+    padding: 1em;
+    backdrop-filter: blur(0.2em);
+}
+
+.heading2,
+.label {
+    font-family: Barlow;
+    color: var(--secondary-color1-);
+    margin: 2em 0 0.5em;
+}
+
+.heading2 {
+    font-size: 2em;
+    text-align: center;
+    text-decoration: underline;
+}
+
+.form_container {
+    display: flex;
+
+    flex-direction: column;
+    align-items: center;
+}
+
+.form_contain1 {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 1em;
+
+}
+
+.form_section,
+.form_part {
+    display: flex;
+    flex-direction: column;
+
+}
+
+.form_section {
+    width: 50%;
+    align-items: center;
+    gap: 0.2em;
+
+    padding: 0 0 0.5em 0;
+
+    justify-content: center;
+
+}
+
+.form_part {
+    width: 100%;
+    flex-direction: column;
+
+}
+
+.label {
+    margin: 1em 0 0.5em;
+    font-size: 1.3em;
+}
+
+.input1 {
+    color: #FFF;
+
+    text-shadow: 15px 12px 50px rgba(0, 0, 0, 0.30);
+    /* Body Bold XL */
+    font-family: Inter;
+    font-size: 0.9em;
+    padding: 0.7em;
+    border-radius: 25px;
+    border: 2px solid #EFEFEF;
+    width: 100%;
+    background: none;
+
+    box-shadow: 0px 4px 25px 0px rgba(0, 0, 0, 0.25);
+}
+
+.file-input {
+
+    color: var(--secondary-color1-);
+}
+
+.file-input::-webkit-file-upload-button {
+
+    background: none;
+    border-radius: 0.8em;
+    border: 0.1em solid var(--accent-color2-);
+    color: var(--secondary-color1-);
+    padding: 0.3em 1.2em;
+}
+
+.songcollection {
+    display: flex;
+    flex-wrap: wrap;
+    height: 25em;
+    width: 90%;
+    justify-content: center;
+    border-radius: 1em;
+    margin: 0.5em 0;
+    gap: 1em;
+    overflow-y: scroll;
+    background-color: var(--secondary-color2-);
+    align-self: center;
+}
+
+.song_collect {
+    display: flex;
+    align-items: center;
+    gap: 0.5em;
+}
+
+.title1 {
+    font-size: 1.6em;
+}
+
+.para1 {
+    font-size: 1.2em;
+
+}
+
+.songlist {
+    width: 22em;
+    display: flex;
+
+    justify-content: space-between;
+    align-items: center;
+}
+
+.songlist {
+    color: var(--secondary-color1-);
+    font-family: Inter;
+    font-size: 0.9em;
+
+    background: var(--secondary-color2-);
+    padding: 1.5em;
+    border-bottom: 0.3em solid var(--accent-color2-);
+}
+
+.song_cover {
+    width: 4em;
+    object-fit: cover;
+    aspect-ratio: 1/1;
+    border-radius: 50%;
+
+}
+
+.form_submit {
+    display: flex;
+    justify-content: center;
+    margin: 1em 0 0 0;
+}
+
+.form_section1 {
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+
+}
