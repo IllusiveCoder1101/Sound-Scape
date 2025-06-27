@@ -24,3 +24,15 @@ Whether you're a fan of J‑Pop or just exploring, Sound‑Scape offers a clean 
 - **Git** – Version control
 
 ---
+
+## Setup
+
+### On Windows
+
+- env/Scripts/Activate
+- python run.py
+
+### On Mac/Linux
+
+- source venv/bin/activate
+- python run.py
